@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 import os
 from pathlib import Path
 
+from config import config
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -20,10 +22,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure--qlap74caa_+^01p0)$s)9!863)md4xw-zh!x00z+9!)!x8jh7'
+SECRET_KEY = config.SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config.DEBUG
 
 ALLOWED_HOSTS = []
 
@@ -86,11 +88,11 @@ WSGI_APPLICATION = 'hw_10.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'hw_10_db',
-        'USER': 'postgres',
-        'PASSWORD': '567234',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
+        'NAME': config.DB_NAME,
+        'USER': config.DB_USER,
+        'PASSWORD': config.DB_PASSWORD,
+        'HOST': config.DB_HOST,
+        'PORT': config.DB_PORT,
     }
 }
 
@@ -135,3 +137,14 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = config.MAIL_HOST
+EMAIL_PORT = config.MAIL_PORT
+EMAIL_STARTTLS = config.MAIL_STARTTLS
+EMAIL_USE_SSL = config.MAIL_USE_SSL
+EMAIL_USE_TLS = config.MAIL_USE_TLS
+EMAIL_HOST_USER = config.MAIL_HOST_USER
+EMAIL_HOST_PASSWORD = config.MAIL_HOST_PASSWORD
+DEFAULT_FROM_EMAIL = config.DEFAULT_FROM_MAIL

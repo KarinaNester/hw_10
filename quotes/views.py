@@ -5,7 +5,7 @@ from .models import Quote
 
 def main_quotes(request, page=1):
     per_page = 10
-    quotes = Quote.objects.all()
+    quotes = Quote.objects.all().order_by('created_at')
     paginator = Paginator(quotes, per_page)
     quotes_on_page = paginator.page(page)
     return render(request, 'quotes/index.html', context={'quotes': quotes_on_page})
