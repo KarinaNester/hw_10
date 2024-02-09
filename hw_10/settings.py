@@ -139,7 +139,7 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_HOST = config.MAIL_HOST
 EMAIL_PORT = config.MAIL_PORT
 EMAIL_STARTTLS = config.MAIL_STARTTLS
@@ -148,3 +148,5 @@ EMAIL_USE_TLS = config.MAIL_USE_TLS
 EMAIL_HOST_USER = config.MAIL_HOST_USER
 EMAIL_HOST_PASSWORD = config.MAIL_HOST_PASSWORD
 DEFAULT_FROM_EMAIL = config.DEFAULT_FROM_MAIL
+
+EMAIL_TIMEOUT = 30
